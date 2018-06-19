@@ -31,9 +31,10 @@ $(document).ready(function() {
     dancers.push(dancer.$node);
   });
 
-  $("body").on('click', function(e) {
+  $(".LineUpDancers").on('click', function() {
+    console.log('hit');
     window.dancers.forEach(element => element.addClass("lineup"));
-    // console.log(window.dancers);
+    console.log(window.dancers);
     
   });
 
