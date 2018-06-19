@@ -29,5 +29,13 @@ $(document).ready(function() {
     );
     $('body').append(dancer.$node);
   });
+
+  $("body").on('click', function(e) {
+    console.log('gotcha');
+    console.log(e.target.css());
+    
+  });
+
 });
+
 

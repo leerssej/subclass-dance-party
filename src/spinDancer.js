@@ -2,7 +2,7 @@ var makeSpinDancer = function(top, left, timeBetweenSteps) {
   // this = Object.create(makeBlinkyDancer.prototype)
   // this.oldStep = makeDancer.prototype.step;
   makeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="spinDancer"></span>');
+  this.$node = $('<span class="spin dancer"></span>');
   this.setPosition(top, left);
 };
 
