@@ -27,15 +27,18 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    
     $('body').append(dancer.$node);
     dancers.push(dancer.$node);
   });
 
   $(".LineUpDancers").on('click', function() {
-    console.log('hit');
-    window.dancers.forEach(element => element.addClass("lineup"));
-    console.log(window.dancers);
-    
+    window.dancers.forEach(element => element.css("top", "70%"));
+  });
+  
+  // add magenta skirt on mouseover
+  $("body").on('mouseover', ".special", function(e) {
+    $(".special").css("border", "100px solid darkmagenta");
   });
 
 });

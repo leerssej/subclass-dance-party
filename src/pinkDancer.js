@@ -2,7 +2,7 @@ var makePinkDancer = function (top, left, timeBetweenSteps) {
   // this = Object.create(makeBlinkyDancer.prototype)
   // this.oldStep = makeDancer.prototype.step;
   makeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="pink dancer"></span>');
+  this.$node = $('<span class="pink dancer special"></span>');
   this.setPosition(top, left);
 };
 
