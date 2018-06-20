@@ -40,7 +40,23 @@ $(document).ready(function() {
   $("body").on('mouseover', ".special", function(e) {
     $(".special").css("border", "100px solid darkmagenta");
   });
+  
+  $("body").on('click', ".dancer", function(e) {
+    // $('.dancer').css({animation: rotation 2s linear 0s infinite});
+    // window.dancers.forEach(); 
+
+    console.log(e.target.closest(".dancer"));
+    // if(e.target.closest(".dancer")) {
+      
+    // $(".dancer").html("clicked: " + event.target.nodeName);
+    // console.log($(".dancer").css("border", "100px solid darkmagenta"));
+    // }
+    // window.dancers.forEach(element => element.css("top", "70%"));
+    // console.log(window.dancers);
+  });
 
 });
+
+
 
 
