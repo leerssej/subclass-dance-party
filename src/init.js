@@ -82,7 +82,6 @@ $(document).ready(function() {
     return distArr;
   };
 
-
   findDist(dancersX, dancersY);
 
   var find3Shortest = function (distArr) {
@@ -101,8 +100,12 @@ $(document).ready(function() {
     
   $("body").on('click', ".spin", function() {
     console.log(findClosest(window.dancers));
-    $(findClosest(window.dancers)).animate({left: 300 })
-      .animate({left: 600 });
+    $(".spin").animate({left: 300, top: 100})
+      .animate({left: 800, top: 500});
+
+    window.dancers.forEach(element => console.log(element));
+    console.log(dancersX);
+    console.log(dancersY);
     // window.dancers.forEach(); 
 
     // console.log(e.target.closest(".dancer"))
