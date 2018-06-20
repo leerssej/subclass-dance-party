@@ -10,12 +10,16 @@ body{
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton, .LineUpDancers{
+.title,
+.addDancerButton,
+.LineUpDancers,
+.chaperone{
   padding:5px 12px;
   float:right;
 }
 .topbar{
   height:32px;
+  margin-bottom: 100px;
   background-color: #555;
   border-bottom-left-radius: 10px;
 }
@@ -27,6 +31,7 @@ body, a:link, a:visited, a:active{
   border:100px solid green;
   border-radius: 8%;
   position:absolute;
+  -webkit-animation: rotation 2s infinite linear;
 }
 /*.dancer:hover{*/
   /*border:100px solid darkmagenta;*/
@@ -38,7 +43,7 @@ body, a:link, a:visited, a:active{
 .spin{
   content: url(images/blueSpinner.webp);
   border: 0px solid blue;
-  border-radius: 50%;1
+  border-radius: 50%;
   position:absolute;
 }
 .pink{
@@ -49,4 +54,12 @@ body, a:link, a:visited, a:active{
 }
 .lineup{
   display: inline-block;
+}
+@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
 }

@@ -1,7 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
   window.dancers = [];
+  window.dancersX = [];
+  window.dancersY = [];
+  distArr = [];
 
-  $('.addDancerButton').on('click', function(event) {
+  $('.addDancerButton').on('click', function (event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -27,9 +30,11 @@ $(document).ready(function() {
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
-    
+
     $('body').append(dancer.$node);
     dancers.push(dancer.$node);
+    dancersY.push(Math.floor(dancer.top));
+    dancersX.push(Math.floor(dancer.left));
   });
 
   $(".LineUpDancers").on('click', function() {
@@ -38,7 +43,7 @@ $(document).ready(function() {
   
   // add magenta skirt on mouseover
   $("body").on('mouseover', ".special", function(e) {
-    $(".special").css("border", "100px solid darkmagenta");
+    $(".special").css("border", "10px solid darkmagenta");
   });
   
   var findClosest = function() {
@@ -61,11 +66,10 @@ $(document).ready(function() {
     }
     return closest;
   };
-  console.log(findClosest(window.dancers));
+  // console.log(findClosest(window.dancers));
 
-  dancersX = [324, 783, 415, 75];
-  dancersY = [555, 454, 638, 480];
-  distArr = [];
+  // dancersX = [324, 783, 415, 75];
+  // dancersY = [555, 454, 638, 480];
 
   var findDist = function (dancersX, dancersY) {
     for (let i = 0; i < dancersX.length; i++) {
@@ -75,66 +79,48 @@ $(document).ready(function() {
         let Ysqr = Math.pow(dancersY[i] - dancersY[j], 2);
         let dist = Math.sqrt(Xsqr + Ysqr);
         let label = i;
-        console.log(dist);
+        // console.log(dist);
         distArr.push([Math.floor(dist), label]);
       }
     }
     return distArr;
   };
 
-  findDist(dancersX, dancersY);
+  // findDist(dancersX, dancersY);
 
   var find3Shortest = function (distArr) {
     let sortedArr = distArr.sort((a, b) => a[0] - b[0]);
     let nonZero = sortedArr
       .filter(element => element[0] !== 0)
       .map(element => element[1]);
-    console.log(nonZero);
+    // console.log(nonZero);
     let least3 = Array.from(new Set(nonZero)).slice(0, 3);
     return least3;
   };
-
-  console.log(find3Shortest(distArr));
-
-
-    
+  
+  // move the blue dancers around
   $("body").on('click', ".spin", function() {
-    console.log(findClosest(window.dancers));
     $(".spin").animate({left: 300, top: 100})
       .animate({left: 800, top: 500});
-
-    window.dancers.forEach(element => console.log(element));
-    console.log(dancersX);
-    console.log(dancersY);
-    // window.dancers.forEach(); 
-
-    // console.log(e.target.closest(".dancer"))
-    // if(e.target.closest(".dancer")) {
-      
-    // $(".dancer").html("clicked: " + event.target.nodeName);
-    // console.log($(".dancer").css("border", "100px solid darkmagenta"));
-    // }
-    // window.dancers.forEach(element => element.css("top", "70%"));
-    // console.log(window.dancers);
-  // });
-  
-  // $("body").on('click', ".spin", function() {
-  //   $('.dancer').animate({left: 300 })
-  //     .animate({left: 600 });
-    // window.dancers.forEach(); 
-
-    // console.log(e.target.closest(".dancer"))
-    // if(e.target.closest(".dancer")) {
-      
-    // $(".dancer").html("clicked: " + event.target.nodeName);
-    // console.log($(".dancer").css("border", "100px solid darkmagenta"));
-    // }
-    // window.dancers.forEach(element => element.css("top", "70%"));
-    // console.log(window.dancers);
   });
-
+  
+  // move the three closest dancers
+  $(".chaperone").on('click', function () {
+    findDist(dancersX, dancersY);
+    let closest = find3Shortest(distArr);
+    let closestArr = [window.dancers[closest[0]], window.dancers[closest[1]], window.dancers[closest[2]]];
+    console.log(closestArr);
+    // $(".spin").animate({ left: 300, top: 100 })
+    // .animate({ left: 800, top: 500 });
+    
+    console.log(find3Shortest(distArr));
+    closestArr.forEach((element, i) => {
+      element.css("top", "20px");
+      element.css("left", `${i*400}px`);
+    });
+  });   
 });
-
+    
 
 
 
