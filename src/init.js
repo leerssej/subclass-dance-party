@@ -44,11 +44,11 @@ $(document).ready(function() {
   var findClosest = function() {
     var closest = null;
     for (var i = 0; i < window.dancers.length; i++) {
-      dancerTop1 = windows.dancers[i]._top;
-      dancerLeft1 = windows.dancers[i]._left;
+      dancerTop1 = window.dancers[i]._top;
+      dancerLeft1 = window.dancers[i]._left;
       for (var j = 0; j < window.dancers.length; j++) {
-        dancerTop2 = windows.dancers[j]._top;
-        dancerLeft2 = windows.dancers[j]._left;
+        dancerTop2 = window.dancers[j]._top;
+        dancerLeft2 = window.dancers[j]._left;
         var distanceTop = Math.abs(dancerTop1 - dancerTop2);
         var distanceLeft = Math.abs(dancerLeft1 - dancerLeft2);
         var distance = Math.sqrt((distanceTop * distanceTop) + (distanceLeft * distanceLeft));
@@ -61,10 +61,27 @@ $(document).ready(function() {
     }
     return closest;
   };
-  
+  console.log(findClosest(window.dancers));
+    
   $("body").on('click', ".spin", function() {
-    $('.dancer').animate({left: 300 })
+    console.log(findClosest(window.dancers));
+    $(findClosest(window.dancers)).animate({left: 300 })
       .animate({left: 600 });
+    // window.dancers.forEach(); 
+
+    // console.log(e.target.closest(".dancer"))
+    // if(e.target.closest(".dancer")) {
+      
+    // $(".dancer").html("clicked: " + event.target.nodeName);
+    // console.log($(".dancer").css("border", "100px solid darkmagenta"));
+    // }
+    // window.dancers.forEach(element => element.css("top", "70%"));
+    // console.log(window.dancers);
+  // });
+  
+  // $("body").on('click', ".spin", function() {
+  //   $('.dancer').animate({left: 300 })
+  //     .animate({left: 600 });
     // window.dancers.forEach(); 
 
     // console.log(e.target.closest(".dancer"))

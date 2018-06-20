@@ -12,5 +12,5 @@ makeSpinDancer.prototype.constructor = makeDancer;
 makeSpinDancer.prototype.step = function() {
   // this.oldStep.call(this);
   makeDancer.prototype.step.call(this);
-  this.$node.toggle();
+  // this.$node.toggle();
 };
