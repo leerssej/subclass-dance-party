@@ -62,6 +62,42 @@ $(document).ready(function() {
     return closest;
   };
   console.log(findClosest(window.dancers));
+
+  dancersX = [324, 783, 415, 75];
+  dancersY = [555, 454, 638, 480];
+  distArr = [];
+
+  var findDist = function (dancersX, dancersY) {
+    for (let i = 0; i < dancersX.length; i++) {
+      // console.log(dancersX)
+      for (let j = 0; j < dancersY.length; j++) {
+        let Xsqr = Math.pow(dancersX[i] - dancersX[j], 2);
+        let Ysqr = Math.pow(dancersY[i] - dancersY[j], 2);
+        let dist = Math.sqrt(Xsqr + Ysqr);
+        let label = i;
+        console.log(dist);
+        distArr.push([Math.floor(dist), label]);
+      }
+    }
+    return distArr;
+  };
+
+
+  findDist(dancersX, dancersY);
+
+  var find3Shortest = function (distArr) {
+    let sortedArr = distArr.sort((a, b) => a[0] - b[0]);
+    let nonZero = sortedArr
+      .filter(element => element[0] !== 0)
+      .map(element => element[1]);
+    console.log(nonZero);
+    let least3 = Array.from(new Set(nonZero)).slice(0, 3);
+    return least3;
+  };
+
+  console.log(find3Shortest(distArr));
+
+
     
   $("body").on('click', ".spin", function() {
     console.log(findClosest(window.dancers));
