@@ -41,11 +41,33 @@ $(document).ready(function() {
     $(".special").css("border", "100px solid darkmagenta");
   });
   
-  $("body").on('click', ".dancer", function(e) {
-    // $('.dancer').css({animation: rotation 2s linear 0s infinite});
+  var findClosest = function() {
+    var closest = null;
+    for (var i = 0; i < window.dancers.length; i++) {
+      dancerTop1 = windows.dancers[i]._top;
+      dancerLeft1 = windows.dancers[i]._left;
+      for (var j = 0; j < window.dancers.length; j++) {
+        dancerTop2 = windows.dancers[j]._top;
+        dancerLeft2 = windows.dancers[j]._left;
+        var distanceTop = Math.abs(dancerTop1 - dancerTop2);
+        var distanceLeft = Math.abs(dancerLeft1 - dancerLeft2);
+        var distance = Math.sqrt((distanceTop * distanceTop) + (distanceLeft * distanceLeft));
+        if (closest = null) {
+          closest = distance;
+        } else if (distance < closest) {
+          closest = distance;
+        }
+      }
+    }
+    return closest;
+  };
+  
+  $("body").on('click', ".spin", function() {
+    $('.dancer').animate({left: 300 })
+      .animate({left: 600 });
     // window.dancers.forEach(); 
 
-    console.log(e.target.closest(".dancer"));
+    // console.log(e.target.closest(".dancer"))
     // if(e.target.closest(".dancer")) {
       
     // $(".dancer").html("clicked: " + event.target.nodeName);

@@ -38,7 +38,7 @@ body, a:link, a:visited, a:active{
 .spin{
   content: url(images/blueSpinner.webp);
   border: 0px solid blue;
-  border-radius: 50%;
+  border-radius: 50%;1
   position:absolute;
 }
 .pink{
@@ -49,6 +49,4 @@ body, a:link, a:visited, a:active{
 }
 .lineup{
   display: inline-block;
-/*  margin-left: 800px;*/
-/*  flex-direction: column;*/
 }
